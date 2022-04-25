@@ -1,0 +1,57 @@
+<h3>Formulario de Registro</h3>
+
+<form (ngSubmit)="enviar()" #form="ngForm">
+    <label>Nombre de usuario</label>
+    <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="formulario.nombre" class="form-control" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}"/>
+    <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors?.['required']">
+            Introduzca un nombre
+        </div>
+    </div>
+
+    <label>Confirma la Contraseña</label>
+    <input type="password" #passwd="ngModel" name="passwd" [(ngModel)]="formulario.passwd" class="form-control" required [ngClass]="{'is-valid': !passwd.invalid, 'is-invalid': passwd.invalid}"/>
+    <div class="invalid-feedback" *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)">
+        <div *ngIf="passwd.errors?.['required']">
+            Introduzca una contraseña
+        </div>
+    </div>
+
+    <!-- Pendiente la validación por "contraseñas iguales" -->
+    <label>Contraseña</label>
+    <input type="password" #repitePasswd="ngModel" name="repitePasswd" [(ngModel)]="formulario.repitePasswd" class="form-control" required [ngClass]="{'is-valid': !repitePasswd.invalid, 'is-invalid': repitePasswd.invalid}"/>
+    <div class="invalid-feedback" *ngIf="repitePasswd.invalid && (repitePasswd.dirty || repitePasswd.touched)">
+        <div *ngIf="repitePasswd.errors?.['required']">
+            Este campo es obligatorio
+        </div>
+    </div>
+
+    <!-- Pendiente la validación por "regexp" -->
+    <label>Correo</label>
+    <input type="email" #correo="ngModel" name="correo" [(ngModel)]="formulario.correo" class="form-control" required [ngClass]="{'is-valid': !correo.invalid, 'is-invalid': correo.invalid}"/>
+    <div class="invalid-feedback" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+        <div *ngIf="correo.errors?.['required']">
+            El correo es obligatorio
+        </div>
+    </div>
+
+    <div class="form-check">
+        <input type="checkbox" id="flexCheckDefault" #ofertas="ngModel" name="ofertas" [(ngModel)]="formulario.ofertas" class="form-check-input"/>
+        <label class="form-check-label" for="flexCheckDefault">Enviarme ofertas promocionales</label>
+    </div>
+
+    <label>País</label>
+    <select id="pais" #ciudad="ngModel" name="pais" [(ngModel)]="formulario.paises" class="form-control">
+        <option value="" *ngFor="let pais of formulario.paises">
+            {{ pais }}
+        </option>
+    </select>
+
+    <label>Ciudad</label>
+    <input type="text" #ciudad="ngModel" name="ciudad" [(ngModel)]="formulario.ciudad" class="form-control" required [ngClass]="{'is-valid': !ciudad.invalid, 'is-invalid': ciudad.invalid}"/>
+    <div class="invalid-feedback" *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)">
+        <div *ngIf="ciudad.errors?.['required']">
+            La ciudad es obligatoria
+        </div>
+    </div>
+</form>
