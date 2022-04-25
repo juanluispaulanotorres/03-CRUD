@@ -1,0 +1,21 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "usuario": "John Doe",
+      "email": "john.due@gmail.com"
+    }
+  ],
+  "personas": [
+    {
+      "id": "dgff",
+      "nombre": "",
+      "passwd": "",
+      "repitePasswd": "",
+      "correo": "",
+      "ofertas": false,
+      "paises": [],
+      "ciudad": ""
+    }
+  ]
+}

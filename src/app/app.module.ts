@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import { UsuarioComponent } from './usuario/usuario/usuario.component';
 import { FormularioComponent } from './usuario/formulario/formulario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ListadoComponent } from './usuario/listado/listado.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -22,7 +23,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserModule,
     AppRoutingModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

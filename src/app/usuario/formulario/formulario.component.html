@@ -1,57 +1,56 @@
 <h3>Formulario de Registro</h3>
 
-<form (ngSubmit)="enviar()" #form="ngForm">
-    <label>Nombre de usuario</label>
-    <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="formulario.nombre" class="form-control" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}"/>
-    <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-        <div *ngIf="nombre.errors?.['required']">
-            Introduzca un nombre
-        </div>
+<form (ngSubmit)="enviar()" [formGroup]="formulario">
+
+    <label>Nombre</label>
+    <input type="text" formControlName="nombre" class="form-control"/>
+    <div class="text-danger" *ngIf="formulario.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched">
+        El campo "nombre" es requerido
+    </div>
+
+    <label>Contraseña</label>
+    <input type="password" formControlName="passwd" class="form-control"  />
+    <div class="text-danger" *ngIf="formulario.get('passwd')?.hasError('required') && formulario.get('passwd')?.touched">
+        El campo "contraseña" es requerido
     </div>
 
     <label>Confirma la Contraseña</label>
-    <input type="password" #passwd="ngModel" name="passwd" [(ngModel)]="formulario.passwd" class="form-control" required [ngClass]="{'is-valid': !passwd.invalid, 'is-invalid': passwd.invalid}"/>
-    <div class="invalid-feedback" *ngIf="passwd.invalid && (passwd.dirty || passwd.touched)">
-        <div *ngIf="passwd.errors?.['required']">
-            Introduzca una contraseña
-        </div>
+    <input type="password" formControlName="repitePasswd" class="form-control"  />
+    <div class="text-danger" *ngIf="formulario.get('repitePasswd')?.hasError('required') && formulario.get('repitePasswd')?.touched">
+        Este campo es requerido
+    </div>
+    <div class="text-danger" *ngIf="!mustMatch(formulario.get('passwd')?.value, formulario.get('repitePasswd')?.value)">
+        Las contraseñas deben coincidir
     </div>
 
-    <!-- Pendiente la validación por "contraseñas iguales" -->
-    <label>Contraseña</label>
-    <input type="password" #repitePasswd="ngModel" name="repitePasswd" [(ngModel)]="formulario.repitePasswd" class="form-control" required [ngClass]="{'is-valid': !repitePasswd.invalid, 'is-invalid': repitePasswd.invalid}"/>
-    <div class="invalid-feedback" *ngIf="repitePasswd.invalid && (repitePasswd.dirty || repitePasswd.touched)">
-        <div *ngIf="repitePasswd.errors?.['required']">
-            Este campo es obligatorio
-        </div>
-    </div>
-
-    <!-- Pendiente la validación por "regexp" -->
     <label>Correo</label>
-    <input type="email" #correo="ngModel" name="correo" [(ngModel)]="formulario.correo" class="form-control" required [ngClass]="{'is-valid': !correo.invalid, 'is-invalid': correo.invalid}"/>
-    <div class="invalid-feedback" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
-        <div *ngIf="correo.errors?.['required']">
-            El correo es obligatorio
+    <input type="text" formControlName="correo" class="form-control" />                      <!-- Valor del form control en el input: [ngModel]="formulario.get('nombre')?.value" -->
+    <div *ngIf="formulario.get('correo')?.touched">
+        <div class="text-danger" *ngIf="formulario.get('correo')?.hasError('required')">
+            El campo "correo" es requerido
+        </div>
+        <div class="text-danger" *ngIf="formulario.get('correo')?.hasError('email')">
+            El correo debe de ser válido
         </div>
     </div>
 
     <div class="form-check">
-        <input type="checkbox" id="flexCheckDefault" #ofertas="ngModel" name="ofertas" [(ngModel)]="formulario.ofertas" class="form-check-input"/>
+        <input type="checkbox" id="flexCheckDefault" formControlName="ofertas" name="ofertas" class="form-check-input"/>
         <label class="form-check-label" for="flexCheckDefault">Enviarme ofertas promocionales</label>
     </div>
 
     <label>País</label>
-    <select id="pais" #ciudad="ngModel" name="pais" [(ngModel)]="formulario.paises" class="form-control">
-        <option value="" *ngFor="let pais of formulario.paises">
+    <select id="pais" name="pais" formControlName="paises" class="form-control">
+        <option *ngFor="let pais of formulario.get('paises')?.value">
             {{ pais }}
         </option>
     </select>
 
     <label>Ciudad</label>
-    <input type="text" #ciudad="ngModel" name="ciudad" [(ngModel)]="formulario.ciudad" class="form-control" required [ngClass]="{'is-valid': !ciudad.invalid, 'is-invalid': ciudad.invalid}"/>
-    <div class="invalid-feedback" *ngIf="ciudad.invalid && (ciudad.dirty || ciudad.touched)">
-        <div *ngIf="ciudad.errors?.['required']">
-            La ciudad es obligatoria
-        </div>
-    </div>
+    <input type="text" formControlName="ciudad" class="form-control"/>
+    <div class="text-danger" *ngIf="formulario.get('ciudad')?.hasError('required') && formulario.get('ciudad')?.touched">
+        El campo "ciudad" es requerido
+    </div><br>
+
+    <button type="submit" [formGroup]="formulario" [disabled]="!formulario.valid" class="btn btn-primary">Crear</button>
 </form>

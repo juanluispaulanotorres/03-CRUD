@@ -1,14 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-interface IUsuarioForm {
-  nombre: string;
-  passwd: string;
-  repitePasswd: string;
-  correo: string;
-  ofertas: boolean;
-  paises: string[];
-  ciudad: string;
-}
 
 @Component({
   selector: 'app-formulario',
@@ -17,23 +9,34 @@ interface IUsuarioForm {
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  formulario!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+
+    this.formulario = new FormGroup(
+      {
+        nombre: new FormControl("", Validators.required),
+        passwd: new FormControl("", Validators.required),
+        repitePasswd: new FormControl("", [Validators.required]),
+        correo: new FormControl("", [Validators.required, Validators.email]),
+        ofertas: new FormControl(false),
+        paises: new FormControl(["Spain", "USA"]),
+        ciudad: new FormControl("", Validators.required)
+      }
+    );
   }
 
-  formulario: IUsuarioForm = {
-    nombre: "",
-    passwd: "",
-    repitePasswd: "",
-    correo: "",
-    ofertas: false,
-    paises: [],
-    ciudad: ""
+  mustMatch(passwd: string, repitePasswd: string) {
+    if (passwd == repitePasswd)
+      return true;
+    else
+      return false;
   }
 
   enviar() {
-
+    
   }
 
 }
