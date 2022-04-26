@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from '../interface/user-interface';
+import { UsuarioService } from '../service/usuario.service';
 
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  styleUrls: []
 })
 export class FormularioComponent implements OnInit {
 
+  usuario!: Usuario;
   formulario!: FormGroup;
+  paises: string[] = ["España", "EEUU", "Francia", "Egipto", "México", "Portugal", "Italia", "China", "Japón", "Australia", "Gran Bretaña", "Escocia", "Irlanda"];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
-
     this.formulario = new FormGroup(
       {
         nombre: new FormControl("", Validators.required),
@@ -22,7 +25,7 @@ export class FormularioComponent implements OnInit {
         repitePasswd: new FormControl("", [Validators.required]),
         correo: new FormControl("", [Validators.required, Validators.email]),
         ofertas: new FormControl(false),
-        paises: new FormControl(["Spain", "USA"]),
+        pais: new FormControl(""),
         ciudad: new FormControl("", Validators.required)
       }
     );
@@ -35,8 +38,14 @@ export class FormularioComponent implements OnInit {
       return false;
   }
 
+
   enviar() {
-    
+    this.usuario = this.formulario.value;
+
+    this.usuarioService.alta(this.usuario)
+    .subscribe ((nuevoUsuario) => {
+      console.log(nuevoUsuario);
+    })
   }
 
 }

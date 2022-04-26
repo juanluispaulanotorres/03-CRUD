@@ -40,8 +40,8 @@
     </div>
 
     <label>País</label>
-    <select id="pais" name="pais" formControlName="paises" class="form-control">
-        <option *ngFor="let pais of formulario.get('paises')?.value">
+    <select id="pais" name="pais" formControlName="pais" class="form-control">
+        <option *ngFor="let pais of paises" [value]="pais">
             {{ pais }}
         </option>
     </select>

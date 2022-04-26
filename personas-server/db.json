@@ -1,21 +1,24 @@
 {
   "usuarios": [
     {
-      "id": 1,
-      "usuario": "John Doe",
-      "email": "john.due@gmail.com"
-    }
-  ],
-  "personas": [
-    {
       "id": "dgff",
-      "nombre": "",
-      "passwd": "",
-      "repitePasswd": "",
-      "correo": "",
+      "nombre": "Juan Luis",
+      "passwd": "juanlu",
+      "repitePasswd": "juanlu",
+      "correo": "juanluis@bosonit.com",
+      "ofertas": true,
+      "pais": "Spain",
+      "ciudad": "Jaén"
+    },
+    {
+      "nombre": "sandra",
+      "passwd": "sandra",
+      "repitePasswd": "sandra",
+      "correo": "s@gmail.es",
       "ofertas": false,
-      "paises": [],
-      "ciudad": ""
+      "pais": "Italia",
+      "ciudad": "Roma",
+      "id": "gq2bKMB"
     }
   ]
 }
