@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Usuario } from '../interface/user-interface';
 import { UsuarioService } from '../service/usuario.service';
 
@@ -15,9 +16,12 @@ export class FormularioComponent implements OnInit {
   formulario!: FormGroup;
   paises: string[] = ["España", "EEUU", "Francia", "Egipto", "México", "Portugal", "Italia", "China", "Japón", "Australia", "Gran Bretaña", "Escocia", "Irlanda"];
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService,
+              private route: Router) {}
 
   ngOnInit(): void {
+    console.log(this.route.url);
+
     this.formulario = new FormGroup(
       {
         nombre: new FormControl("", Validators.required),
@@ -43,9 +47,14 @@ export class FormularioComponent implements OnInit {
     this.usuario = this.formulario.value;
 
     this.usuarioService.alta(this.usuario)
-    .subscribe ((nuevoUsuario) => {
+    .subscribe( (nuevoUsuario) => {
       console.log(nuevoUsuario);
-    })
+      this.formulario.reset();
+    });
   }
+
+  // recibirUsuario(usuario: Usuario) {
+  //   console.log(usuario.ciudad);
+  // }
 
 }

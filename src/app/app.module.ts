@@ -9,13 +9,16 @@ import { FormularioComponent } from './usuario/formulario/formulario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListadoComponent } from './usuario/listado/listado.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EditarComponent } from './usuario/editar/editar.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsuarioComponent,
     FormularioComponent,
-    ListadoComponent
+    ListadoComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

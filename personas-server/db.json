@@ -19,6 +19,56 @@
       "pais": "Italia",
       "ciudad": "Roma",
       "id": "gq2bKMB"
+    },
+    {
+      "nombre": "jesús",
+      "passwd": "jesus",
+      "repitePasswd": "jesus",
+      "correo": "j@gmail.com",
+      "ofertas": true,
+      "pais": "Australia",
+      "ciudad": "Melbourne",
+      "id": "H-d3pT1"
+    },
+    {
+      "nombre": "María",
+      "passwd": "maria",
+      "repitePasswd": "maria",
+      "correo": "mpm@hotmail.com",
+      "ofertas": false,
+      "pais": "Escocia",
+      "ciudad": "Jaén",
+      "id": "o2WATFV"
+    },
+    {
+      "nombre": "Javi",
+      "passwd": "javi",
+      "repitePasswd": "javi",
+      "correo": "javi@gmail.com",
+      "ofertas": false,
+      "pais": "Japón",
+      "ciudad": "Jaén",
+      "id": "pUtTT3H"
+    },
+    {
+      "nombre": "Patricia",
+      "passwd": "patri",
+      "repitePasswd": "patri",
+      "correo": "patricia@hotmail.com",
+      "ofertas": true,
+      "pais": "Irlanda",
+      "ciudad": "Jaén",
+      "id": "8fWVbwN"
+    },
+    {
+      "nombre": "Diego",
+      "passwd": "d",
+      "repitePasswd": "d",
+      "correo": "d@bosonit.com",
+      "ofertas": false,
+      "pais": "Japón",
+      "ciudad": "Tokio",
+      "id": "8Qm5D-1"
     }
   ]
 }

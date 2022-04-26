@@ -22,4 +22,7 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(`${this.url}`);
   }
 
+  obtenerUsuario(usuarioId: string): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.url}/${usuarioId}`);
+  }
 }

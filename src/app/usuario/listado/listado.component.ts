@@ -14,10 +14,12 @@ export class ListadoComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService) { }
 
+
   ngOnInit(): void {
     this.usuarioService.listar()
     .subscribe( (usuarios) => {
       this.listadoUsuarios = usuarios;
+      //this.ngOnInit();      // De esta manera mostramos el listado al modificar la tabla con los datos de cada usuario
     })
   }
 
