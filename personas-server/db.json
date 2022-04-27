@@ -41,16 +41,6 @@
       "id": "o2WATFV"
     },
     {
-      "nombre": "Javi",
-      "passwd": "javi",
-      "repitePasswd": "javi",
-      "correo": "javi@gmail.com",
-      "ofertas": false,
-      "pais": "Japón",
-      "ciudad": "Jaén",
-      "id": "pUtTT3H"
-    },
-    {
       "nombre": "Patricia",
       "passwd": "patri",
       "repitePasswd": "patri",
@@ -59,16 +49,6 @@
       "pais": "Irlanda",
       "ciudad": "Jaén",
       "id": "8fWVbwN"
-    },
-    {
-      "nombre": "Diego",
-      "passwd": "d",
-      "repitePasswd": "d",
-      "correo": "d@bosonit.com",
-      "ofertas": false,
-      "pais": "Japón",
-      "ciudad": "Tokio",
-      "id": "8Qm5D-1"
     }
   ]
 }

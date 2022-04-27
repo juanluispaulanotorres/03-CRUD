@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from '../interface/user-interface';
+import { ListadoComponent } from '../listado/listado.component';
 import { UsuarioService } from '../service/usuario.service';
 
 
@@ -16,11 +17,12 @@ export class FormularioComponent implements OnInit {
   formulario!: FormGroup;
   paises: string[] = ["España", "EEUU", "Francia", "Egipto", "México", "Portugal", "Italia", "China", "Japón", "Australia", "Gran Bretaña", "Escocia", "Irlanda"];
 
+  listado!: ListadoComponent;
+
   constructor(private usuarioService: UsuarioService,
               private route: Router) {}
 
   ngOnInit(): void {
-    console.log(this.route.url);
 
     this.formulario = new FormGroup(
       {
@@ -50,6 +52,8 @@ export class FormularioComponent implements OnInit {
     .subscribe( (nuevoUsuario) => {
       console.log(nuevoUsuario);
       this.formulario.reset();
+
+      //this.route.navigate(['/']);
     });
   }
 

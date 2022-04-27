@@ -25,4 +25,8 @@ export class UsuarioService {
   obtenerUsuario(usuarioId: string): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.url}/${usuarioId}`);
   }
+
+  eliminarUsuario(usuarioId: string) {
+    return this.http.delete(`${this.url}/${usuarioId}`);
+  }
 }

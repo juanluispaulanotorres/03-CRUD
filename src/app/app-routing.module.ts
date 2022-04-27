@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: "editar/:id",
     component: EditarComponent
+  },
+  {
+    path: "eliminar/:id",
+    component: EditarComponent
   }
 ];
 
@@ -19,4 +23,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

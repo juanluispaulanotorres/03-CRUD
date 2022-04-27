@@ -14,7 +14,7 @@ export class EditarComponent implements OnInit {
 
   usuario!: Usuario;
 
-  @Output() emisor: EventEmitter<Usuario> = new EventEmitter();
+  //@Output() emisor: EventEmitter<Usuario> = new EventEmitter();
 
   constructor(private usuarioService: UsuarioService,
               private rutaActiva: ActivatedRoute,
@@ -22,6 +22,7 @@ export class EditarComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.route.url);
+
     this.rutaActiva.params
     .pipe(
       switchMap( ({id}) => this.usuarioService.obtenerUsuario(id))                          // ({id}): Es el id de los parámetros de "this.rutaActiva.params"
@@ -32,7 +33,7 @@ export class EditarComponent implements OnInit {
     })
   }
 
-  emitir() {
-    this.emisor.emit(this.usuario);
-  }
+  // emitir() {
+  //   this.emisor.emit(this.usuario);
+  // }
 }
