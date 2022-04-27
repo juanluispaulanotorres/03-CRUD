@@ -3,7 +3,6 @@
         <app-formulario></app-formulario>
     </div>
     <div fxLayout="column" fxFlex="70" fxFlex.sm="100"  fxFlex.xs="100">
-        <app-listado></app-listado>
+        <app-listado (onEditarUsuario)="editarUsuario($event)"></app-listado>
     </div>
 </div>
-

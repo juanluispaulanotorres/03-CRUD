@@ -4,12 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { UsuarioComponent } from './usuario/usuario/usuario.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 import { FormularioComponent } from './usuario/formulario/formulario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListadoComponent } from './usuario/listado/listado.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { EditarComponent } from './usuario/editar/editar.component';
 import { TableModule } from 'primeng/table';
 
 @NgModule({
@@ -17,8 +16,7 @@ import { TableModule } from 'primeng/table';
     AppComponent,
     UsuarioComponent,
     FormularioComponent,
-    ListadoComponent,
-    EditarComponent
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

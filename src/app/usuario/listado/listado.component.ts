@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Usuario } from '../interface/user-interface';
 import { UsuarioService } from '../service/usuario.service';
 
@@ -13,28 +12,29 @@ export class ListadoComponent implements OnInit {
 
   listadoUsuarios!: Usuario[];
 
-  constructor(private usuarioService: UsuarioService, private ruta: Router, private rutaActiva: ActivatedRoute) { }
+  @Output() onEditarUsuario = new EventEmitter<Usuario>()
+
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.usuarioService.listar()
     .subscribe( (usuarios) => {
       this.listadoUsuarios = usuarios;
-      //this.ngOnInit();      // De esta manera mostramos el listado al modificar la tabla con los datos de cada usuario
     })
   }
 
-  // Esto debe estar en el componente "Editar"
+  modificarUsuario(idUsuario: string) {
+    this.usuarioService.obtenerUsuario(idUsuario)
+    .subscribe( (usuario) => {
+      this.onEditarUsuario.emit(usuario)
+    })
+  }
+
   eliminarUsuario(idUsuario: string) {
     this.usuarioService.eliminarUsuario(idUsuario)
     .subscribe( () => {
-      this.ngOnInit();
+      this.ngOnInit();    // Muestro el listado actualizado
     })
   }
-  
-  // eliminarUsuario() {
-  //   this.usuarioService.eliminarPersona(this.persona.id)
-  //   .subscribe( () => {
-  //     this.route.navigate(['/personas']);
-  //   })
-  // }
+
 }

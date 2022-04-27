@@ -2,6 +2,8 @@
 
 <form (ngSubmit)="enviar()" [formGroup]="formulario">
 
+    <input type="text" formControlName="id" class="form-control" style="display: none;"/>
+
     <label>Nombre</label>
     <input type="text" formControlName="nombre" class="form-control"/>
     <div class="text-danger" *ngIf="formulario.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched">
@@ -52,7 +54,5 @@
         El campo "ciudad" es requerido
     </div><br>
 
-    <button type="submit" [formGroup]="formulario" [disabled]="!formulario.valid" class="btn btn-primary">Crear</button>
+    <button type="submit" [formGroup]="formulario" [disabled]="!formulario.valid" class="btn btn-primary"> {{ formulario.get('id')?.value ? "Editar" : "Crear"}} </button>
 </form>
-
-<!-- <app-editar (emisor)="recibirUsuario($event)"></app-editar> -->

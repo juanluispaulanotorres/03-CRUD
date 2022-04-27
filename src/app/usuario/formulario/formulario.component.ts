@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Usuario } from '../interface/user-interface';
-import { ListadoComponent } from '../listado/listado.component';
 import { UsuarioService } from '../service/usuario.service';
 
 
@@ -17,15 +15,13 @@ export class FormularioComponent implements OnInit {
   formulario!: FormGroup;
   paises: string[] = ["España", "EEUU", "Francia", "Egipto", "México", "Portugal", "Italia", "China", "Japón", "Australia", "Gran Bretaña", "Escocia", "Irlanda"];
 
-  listado!: ListadoComponent;
-
-  constructor(private usuarioService: UsuarioService,
-              private route: Router) {}
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
 
     this.formulario = new FormGroup(
       {
+        id: new FormControl(""),
         nombre: new FormControl("", Validators.required),
         passwd: new FormControl("", Validators.required),
         repitePasswd: new FormControl("", [Validators.required]),
@@ -44,21 +40,27 @@ export class FormularioComponent implements OnInit {
       return false;
   }
 
-
   enviar() {
-    this.usuario = this.formulario.value;
 
-    this.usuarioService.alta(this.usuario)
-    .subscribe( (nuevoUsuario) => {
-      console.log(nuevoUsuario);
-      this.formulario.reset();
+    // Si no existe "id" en el formulario (campo oculto) se da de alta al usuario
+    if (this.formulario.get('id')?.value == "") {
+      this.usuario = this.formulario.value;
 
-      //this.route.navigate(['/']);
-    });
+      this.usuarioService.alta(this.usuario)
+      .subscribe( (nuevoUsuario) => {
+        console.log(nuevoUsuario);
+        this.formulario.reset();
+      });
+
+    // Si existe "id" se modifica el usuario
+    } else {
+      this.usuario = this.formulario.value;
+
+      this.usuarioService.modificarUsuario(this.usuario)
+      .subscribe( (nuevoUsuario) => {
+        console.log(nuevoUsuario);
+        this.formulario.reset();
+      });
+    }
   }
-
-  // recibirUsuario(usuario: Usuario) {
-  //   console.log(usuario.ciudad);
-  // }
-
 }

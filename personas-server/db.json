@@ -7,48 +7,38 @@
       "repitePasswd": "juanlu",
       "correo": "juanluis@bosonit.com",
       "ofertas": true,
-      "pais": "Spain",
+      "pais": "España",
       "ciudad": "Jaén"
     },
     {
+      "id": "gq2bKMB",
       "nombre": "sandra",
       "passwd": "sandra",
       "repitePasswd": "sandra",
       "correo": "s@gmail.es",
       "ofertas": false,
-      "pais": "Italia",
-      "ciudad": "Roma",
-      "id": "gq2bKMB"
+      "pais": "Francia",
+      "ciudad": "París"
     },
     {
-      "nombre": "jesús",
-      "passwd": "jesus",
-      "repitePasswd": "jesus",
-      "correo": "j@gmail.com",
-      "ofertas": true,
-      "pais": "Australia",
-      "ciudad": "Melbourne",
-      "id": "H-d3pT1"
-    },
-    {
+      "id": "o2WATFV",
       "nombre": "María",
       "passwd": "maria",
       "repitePasswd": "maria",
       "correo": "mpm@hotmail.com",
       "ofertas": false,
       "pais": "Escocia",
-      "ciudad": "Jaén",
-      "id": "o2WATFV"
+      "ciudad": "Jaén"
     },
     {
-      "nombre": "Patricia",
-      "passwd": "patri",
-      "repitePasswd": "patri",
-      "correo": "patricia@hotmail.com",
+      "id": "Slf9H3p",
+      "nombre": "Javi",
+      "passwd": "javi",
+      "repitePasswd": "javi",
+      "correo": "javi@gmail.com",
       "ofertas": true,
-      "pais": "Irlanda",
-      "ciudad": "Jaén",
-      "id": "8fWVbwN"
+      "pais": "España",
+      "ciudad": "Madrid"
     }
   ]
 }
