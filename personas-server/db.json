@@ -1,0 +1,54 @@
+{
+  "usuarios": [
+    {
+      "id": "dgff",
+      "nombre": "Juan Luis",
+      "passwd": "juanlu",
+      "repitePasswd": "juanlu",
+      "correo": "juanluis@bosonit.com",
+      "ofertas": true,
+      "pais": "España",
+      "ciudad": "Jaén"
+    },
+    {
+      "id": "5Kyni6I",
+      "nombre": "Diego",
+      "passwd": "diego",
+      "repitePasswd": "diego",
+      "correo": "diego@gmail.com",
+      "ofertas": false,
+      "pais": "España",
+      "ciudad": "Málaga"
+    },
+    {
+      "id": "mot7svG",
+      "nombre": "Jesús",
+      "passwd": "jesus",
+      "repitePasswd": "jesus",
+      "correo": "jpm@gmail.com",
+      "ofertas": true,
+      "pais": "España",
+      "ciudad": "Jaén"
+    },
+    {
+      "id": "Nfu8N4J",
+      "nombre": "Sandra",
+      "passwd": "sandra",
+      "repitePasswd": "sandra",
+      "correo": "s@hotmail.com",
+      "ofertas": false,
+      "pais": "Australia",
+      "ciudad": "Sydney"
+    },
+    {
+      "id": "J8neshc",
+      "nombre": "María",
+      "passwd": "maria",
+      "repitePasswd": "maria",
+      "correo": "maria@gmail.com",
+      "ofertas": true,
+      "pais": "Francia",
+      "ciudad": "París"
+    }
+  ]
+}

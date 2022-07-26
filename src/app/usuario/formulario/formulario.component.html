@@ -1,0 +1,58 @@
+<h3>Formulario de Registro</h3>
+
+<form (ngSubmit)="enviar()" [formGroup]="formulario">
+
+    <input type="text" formControlName="id" class="form-control" style="display: none;"/>
+
+    <label>Nombre</label>
+    <input type="text" formControlName="nombre" class="form-control"/>
+    <div class="text-danger" *ngIf="formulario.get('nombre')?.hasError('required') && formulario.get('nombre')?.touched">
+        El campo "nombre" es requerido
+    </div>
+
+    <label>Contraseña</label>
+    <input type="password" formControlName="passwd" class="form-control"  />
+    <div class="text-danger" *ngIf="formulario.get('passwd')?.hasError('required') && formulario.get('passwd')?.touched">
+        El campo "contraseña" es requerido
+    </div>
+
+    <label>Confirma la Contraseña</label>
+    <input type="password" formControlName="repitePasswd" class="form-control"  />
+    <div class="text-danger" *ngIf="formulario.get('repitePasswd')?.hasError('required') && formulario.get('repitePasswd')?.touched">
+        Este campo es requerido
+    </div>
+    <div class="text-danger" *ngIf="!mustMatch(formulario.get('passwd')?.value, formulario.get('repitePasswd')?.value)">
+        Las contraseñas deben coincidir
+    </div>
+
+    <label>Correo</label>
+    <input type="text" formControlName="correo" class="form-control" />                      <!-- Valor del form control en el input: [ngModel]="formulario.get('nombre')?.value" -->
+    <div *ngIf="formulario.get('correo')?.touched">
+        <div class="text-danger" *ngIf="formulario.get('correo')?.hasError('required')">
+            El campo "correo" es requerido
+        </div>
+        <div class="text-danger" *ngIf="formulario.get('correo')?.hasError('email')">
+            El correo debe de ser válido
+        </div>
+    </div>
+
+    <div class="form-check">
+        <input type="checkbox" id="flexCheckDefault" formControlName="ofertas" name="ofertas" class="form-check-input"/>
+        <label class="form-check-label" for="flexCheckDefault">Enviarme ofertas promocionales</label>
+    </div>
+
+    <label>País</label>
+    <select id="pais" name="pais" formControlName="pais" class="form-control">
+        <option *ngFor="let pais of paises" [value]="pais">
+            {{ pais }}
+        </option>
+    </select>
+
+    <label>Ciudad</label>
+    <input type="text" formControlName="ciudad" class="form-control"/>
+    <div class="text-danger" *ngIf="formulario.get('ciudad')?.hasError('required') && formulario.get('ciudad')?.touched">
+        El campo "ciudad" es requerido
+    </div><br>
+
+    <button type="submit" [formGroup]="formulario" [disabled]="!formulario.valid" class="btn btn-primary"> {{ formulario.get('id')?.value ? "Actualizar" : "Crear"}} </button>
+</form>
